@@ -38,6 +38,18 @@ export class TasksService {
 
     updateTask(id: string, title: string, description: string, taskStatus: TaskStatus): Task {
         let taskToUpdate = this.tasks.find(task => task.id === id);
-        return taskToUpdate;
+        if (taskToUpdate) {
+            const updatedTask: Task = {
+                id,
+                title,
+                description,
+                status: TaskStatus.OPEN
+            }
+            taskToUpdate = updatedTask;
+            return taskToUpdate;
+        }
+        else {
+            return;
+        }
     }
 }
