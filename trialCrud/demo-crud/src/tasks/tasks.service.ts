@@ -24,4 +24,8 @@ export class TasksService {
         this.tasks.push(newTask);
         return newTask;
     }
+
+    deleteTask(id: string) {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+    }
 }
