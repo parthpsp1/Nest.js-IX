@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { Task } from './task.model';
+import { Task, TaskStatus } from './task.model';
 import { TasksService } from './tasks.service';
 
 @Controller('tasks')
@@ -31,7 +31,9 @@ export class TasksController {
     }
 
     @Patch('/:id')
-    updateTask(@Param('id') id: string) {
-
+    updateTaskStatus(
+        @Param('id') id: string,
+        @Body('status') status: TaskStatus) {
+        return this.tasksService.updateTaskStatus(id, status);
     }
 }
